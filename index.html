@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  
+  <title>Happy Anniversary❤️</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@600;800&display=swap');
+
+    :root {
+      --clr-bg: #ffffff;
+      --clr-text: #6b7280;
+      --clr-primary: #111827;
+      --btn-bg: #111827;
+      --btn-color: #fff;
+      --btn-hover-bg: #374151;
+      --btn-hover-scale: 1.05;
+      --overlay-bg: rgba(255 255 255 / 0.3);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+    body, html {
+      margin: 0; padding: 0;
+      height: 100%;
+      font-family: 'Inter', sans-serif;
+      background: var(--clr-bg);
+      color: var(--clr-text);
+      overflow: hidden;
+      position: relative;
+    }
+
+    .slideshow-container {
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      z-index: 0;
+      overflow: hidden;
+    }
+
+    .slideshow-container::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: var(--overlay-bg);
+      pointer-events: none;
+      z-index: 2;
+    }
+
+    .slide {
+      position: absolute;
+      top: 0; left: 0; width: 100%; height: 100vh;
+      background-size: cover;
+      background-position: center;
+      opacity: 0;
+      transition: opacity 1.5s ease-in-out;
+      will-change: opacity;
+      z-index: 1;
+    }
+
+    .slide.active {
+      opacity: 1;
+      z-index: 1;
+    }
+
+    .centered-content {
+      position: relative;
+      z-index: 10;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 2rem;
+      padding: 0 1rem;
+      flex-wrap: wrap;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    button {
+      background-color: var(--btn-bg);
+      color: var(--btn-color);
+      font-size: 1.25rem;
+      font-weight: 700;
+      padding: 1rem 2rem;
+      border: none;
+      border-radius: 0.75rem;
+      box-shadow: 0 6px 12px rgb(17 24 39 / 0.2);
+      cursor: pointer;
+      transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+      user-select: none;
+    }
+    button:hover, button:focus {
+      background-color: var(--btn-hover-bg);
+      transform: scale(var(--btn-hover-scale));
+      outline: none;
+      box-shadow: 0 8px 14px rgb(17 24 39 / 0.3);
+    }
+    button:active {
+      transform: scale(0.98);
+    }
+  </style>
+</head>
+<body>
+  <div class="slideshow-container" aria-label="Background slideshow" role="img" aria-live="polite" aria-atomic="true">
+    <div class="slide active" style="background-image: url('photos/image3.jpg');" aria-hidden="false"></div>
+    <div class="slide" style="background-image: url('photos/image2.jpg');" aria-hidden="true"></div>
+    <div class="slide" style="background-image: url('photos/image1.jpg');" aria-hidden="true"></div>
+  </div>
+
+  <main role="main" class="centered-content">
+    <link rel="stylesheet" href="style.css">
+    <div class="container">
+        <h1>Happy Anniversary Loves ko</h1>
+        <p>
+          Happy Anniversary, my love.
+Every day with you reminds me how lucky I am to have a partner who is not only strong and responsible, but also kind, supportive, and endlessly devoted. 
+        </p>
+        <div class="button-group">
+            <a href="loveletter.html" class="btn" target="_blank">loveletter ko papa</a>
+            <a href="heartname.html" class="btn" target="_blank">Click mo akoo</a>
+            <a href="album code/album.html" class="btn" target="_blank">Our Wedding Anniv Book</a>
+            <a href="video.html" class="btn" target="_blank">Watch me</a>
+        </div>
+    </div>
+  </main>
+
+  <script>
+    const slides = document.querySelectorAll('.slide');
+    let currentIndex = 0;
+    const slideInterval = 5000; //5 sikunds
+
+    function showSlide(index) {
+      slides.forEach((slide, i) => {
+        const isActive = i === index;
+        slide.classList.toggle('active', isActive);
+        slide.setAttribute('aria-hidden', !isActive);
+      });
+    }
+
+    function nextSlide() {
+      currentIndex = (currentIndex + 1) % slides.length;
+      showSlide(currentIndex);
+    }
+
+    setInterval(nextSlide, slideInterval);
+
+    document.getElementById('btnLearnMore').addEventListener('click', () => {
+      alert('You clicked "Learn More"');
+    });
+    document.getElementById('btnGetStarted').addEventListener('click', () => {
+      alert('You clicked "Get Started"');
+    });
+    document.getElementById('btnContactUs').addEventListener('click', () => {
+      alert('You clicked "Contact Us"');
+    });
+  </script>
+</body>
+</html>
+
